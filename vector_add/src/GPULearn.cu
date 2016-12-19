@@ -1,9 +1,9 @@
-#include <kernel.cu>
-#include <GPULearn.hh>
 #include <assert.h>
 #include <iostream>
-
 #include <helper_cuda.h>
+
+#include <kernel.cu>
+#include <GPULearn.hh>
 
 using namespace std;
 
@@ -15,6 +15,16 @@ GPULearn::GPULearn(float* a_in, int len_a,
 
 	a_h = a_in;
 	b_h = b_in;
+
+	std::cout<<"array a\n";
+	for(int i=0; i< len_a; i++)
+		std::cout << a_h[i] << " ";
+	std::cout<< "\n";
+
+	std::cout<<"array b\n";
+	for(int i=0; i< len_b; i++)
+		std::cout << b_h[i] << " ";
+	std::cout<< "\n";
 
 	length = len_a;
 
@@ -41,6 +51,7 @@ void GPULearn::vectorAdd() {
 	dim3 blocks = dim3(256, 1, 1);
 	dim3 grids  = dim3(BLK(length, 256), 1, 1);
 
+	std::cout << "length : " << length << "\n";
 	kernel_vectorAdd<<< grids, blocks >>>(a_d, b_d, c_d, length);
 }
 

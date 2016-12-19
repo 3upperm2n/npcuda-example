@@ -1,5 +1,5 @@
 #!/bin/bash
 
-rm *.pyc
+#rm *.pyc
 rm wrapper.cpp
-rm -rf build    *.egg-info
+rm -rf build    *.egg-info dist
