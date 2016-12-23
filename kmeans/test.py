@@ -8,10 +8,10 @@ import time
 npoints = 100
 nfeatures = 2
 
-X = np.random.rand(npoints, nfeatures)
+X = np.random.rand(npoints, nfeatures).astype('f')
 
 
-X = X.astype(np.float32)
+#X = X.astype(np.float32)
 
 #http://stackoverflow.com/questions/4389517/in-place-type-conversion-of-a-numpy-array
 #X_view = X.view('float32')
@@ -36,8 +36,8 @@ label, iters, centroids = mydata.retreive()
 end = time.time()
 
 #print label 
-#print iters 
-#print centroids
+print iters 
+print centroids
 
 runtime = end - start                                                           
 iter_time = runtime / iters 
