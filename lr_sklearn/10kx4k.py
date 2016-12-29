@@ -13,7 +13,7 @@ nfeatures = 4096
 
 print  '10K x 4K using 1 thread'
 
-X = np.random.rand(npoints, nfeatures)
+X = np.random.rand(npoints, nfeatures).astype('f')
 y = np.random.randint(2, size=npoints)
 
 logreg = LogisticRegression(n_jobs=1)
@@ -39,7 +39,7 @@ print '\n\n'
 
 print  '10K x 4K using 4 thread'
 
-X = np.random.rand(npoints, nfeatures)
+X = np.random.rand(npoints, nfeatures).astype('f')
 y = np.random.randint(2, size=npoints)
 
 logreg = LogisticRegression(n_jobs=4)
@@ -64,7 +64,7 @@ print '\n\n'
 
 print  '10K x 4K using 8 thread'
 
-X = np.random.rand(npoints, nfeatures)
+X = np.random.rand(npoints, nfeatures).astype('f')
 y = np.random.randint(2, size=npoints)
 
 logreg = LogisticRegression(n_jobs=8)
