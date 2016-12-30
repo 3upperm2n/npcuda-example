@@ -2,6 +2,9 @@
 #include <stdio.h>
 #include <string.h>
 
+#include <time.h>                                                               
+#include <sys/time.h>
+
 #include <cuda_runtime.h>
 #include <helper_cuda.h>
 
@@ -24,6 +27,8 @@ KmeansGPU::KmeansGPU(float threshold_,
 					 float* data_in
 					 )
 {
+//	tic();
+
 	threshold   = threshold_;
 	nclusters 	= cluster_num_;
 	npoints 	= npoints_;
@@ -93,6 +98,8 @@ KmeansGPU::KmeansGPU(float threshold_,
 	printf("warps per blk : %d\n", warps_per_blk);
 	printf("grd : %d, blk : %d\n", grdDim.x, blkDim.x);
 	*/
+
+//	toc();
 }
 
 KmeansGPU::~KmeansGPU() {

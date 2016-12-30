@@ -1,4 +1,6 @@
 #include <cuda_runtime.h>
+#include <time.h>                                                               
+#include <sys/time.h>
 
 class KmeansGPU
 {
@@ -15,6 +17,26 @@ public:
 
 	void Cleanup();
 
+	void tic() {
+		gettimeofday(&start_timer, NULL);	
+	}
+
+	void toc() {
+		gettimeofday(&end_timer, NULL);	
+
+		long seconds, useconds;                                                     
+		double mtime;
+
+		seconds  = end_timer.tv_sec  - start_timer.tv_sec;                                     
+		useconds = end_timer.tv_usec - start_timer.tv_usec;                                    
+		mtime = useconds;
+		mtime/=1000;                                                                
+		mtime+=seconds*1000;                                                        
+
+		printf("%f ms\n", mtime);
+
+	}
+
 	int BLK(int num, int blksize) {
 		return (num + blksize - 1) / blksize;	
 	}
@@ -26,6 +48,7 @@ public:
 	int Kmeans_gpu(); 	// return: continue or not
 	void getData_extern(int*membership_out, int &iterations_out,float *centroids_out);
 
+	struct timeval start_timer, end_timer;
 
 	float 			threshold;
 	int 			nclusters;

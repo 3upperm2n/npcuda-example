@@ -4,9 +4,11 @@ from gpuML import KmeansGPU
 import time
 
 
-#npoints = 1000000
-npoints = 100
-nfeatures = 2
+npoints = 10000000
+nfeatures = 10 
+
+#npoints = 100
+#nfeatures = 2
 
 X = np.random.rand(npoints, nfeatures).astype('f')
 
@@ -36,7 +38,7 @@ label, iters, centroids = mydata.retreive()
 end = time.time()
 
 #print label 
-print iters 
+#print iters 
 print centroids
 
 runtime = end - start                                                           
